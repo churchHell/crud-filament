@@ -1,3 +1,11 @@
 <div>
-    {{-- The best athlete wants his opponent at his best. --}}
+
+    <form wire:submit.prevent="create">
+        {{ $this->form }}
+     
+        <button type="submit">
+            Create
+        </button>
+    </form>
+
 </div>

@@ -21,6 +21,6 @@
     </head>
 
     <body class="antialiased">
-        {{ $slot }}
+        @yield('content')
     </body>
 </html>

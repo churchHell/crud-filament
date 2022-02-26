@@ -4,7 +4,9 @@
 
 <div class="flex items-center justify-center">
 
-    123
+    <livewire:create
+        :model="$item"
+     />
 
 </div>
 
