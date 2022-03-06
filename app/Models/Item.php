@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\{Builder, Model};
-use Illuminate\Database\Eloquent\Relations\{BelongsTo, BelongsToMany};
+use Illuminate\Database\Eloquent\Relations\{BelongsTo, BelongsToMany, HasOneOrMany};
 
 class Item extends Model
 {
@@ -14,12 +14,18 @@ class Item extends Model
 
     public function category(): BelongsTo
     {
-        return $this->belongsTo(Category::class)->withTimestamps();
+        return $this->belongsTo(Category::class);
     }
 
-    public function properties(): BelongsToMany
+    public function properties(): HasOneOrMany
     {
-        return $this->belongsToMany(Property::class)->withPivot('value')->withTimestamps()->using(ItemProperty::class);
+        return $this->hasMany(Property::class);
     }
+
+
+    // public function properties(): BelongsToMany
+    // {
+    //     return $this->belongsToMany(Property::class)->withPivot('value')->withTimestamps()->using(ItemProperty::class);
+    // }
 
 }

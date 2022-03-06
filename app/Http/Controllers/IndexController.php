@@ -11,7 +11,7 @@ class IndexController extends Controller
 {
     public function index(Item $item): View
     {
-        $categories = Category::select('id', 'name')->get();
+        $categories = Category::select('id', 'name')->get()->keyBy('id')->pluck('name');
         $properties = Property::all();
         return view('index.index', compact('item', 'categories', 'properties'));
     }
